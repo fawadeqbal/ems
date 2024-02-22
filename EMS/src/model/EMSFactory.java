@@ -7,7 +7,9 @@ package model;
 import dal.DALManager;
 import dal.ObjectAdder;
 import dal.ObjectMapper;
+import dal.ObjectModifier;
 import dal.ObjectReader;
+import dal.ObjectRemover;
 import model.dto.Response;
 
 /**
@@ -32,6 +34,12 @@ public class EMSFactory {
     
     public static ObjectReader getInstanceofObjectReader(){
         return new ObjectReader();
+    }
+    public static ObjectRemover getInstanceofObjectRemover(){
+        return new ObjectRemover();
+    }
+    public static ObjectModifier getInstanceofObjectModifier(){
+        return new ObjectModifier();
     }
     public static EMSController getInstanceofEMSController(){
         return new EMSController();

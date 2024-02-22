@@ -13,7 +13,7 @@ import model.dto.Response;
  * @author fawad
  */
 public class ObjectAdder {
-    public boolean addEmployee(Connection connection,Response response, EmployeeDTO employee) {
+    public void addEmployee(Connection connection,Response response, EmployeeDTO employee) {
         PreparedStatement statement = null;
         try {
             String query = "INSERT INTO Employee (name, age, department) VALUES (?, ?, ?)";
@@ -22,11 +22,12 @@ public class ObjectAdder {
             statement.setInt(2, employee.getAge());
             statement.setString(3, employee.getDepartment());
             int rowsInserted = statement.executeUpdate();
-            return rowsInserted > 0;
+            if(rowsInserted > 0){
+                 response.addMessage(new Message("Employee Added successfully.",MessageType.Information));
+            }
         } catch (SQLException e) {
             response.addMessage(new Message("Error occured while adding employee into database.",MessageType.Error));
             response.addMessage(new Message(e.getLocalizedMessage(),MessageType.Exception));
-            return false;
         } 
     }
 }

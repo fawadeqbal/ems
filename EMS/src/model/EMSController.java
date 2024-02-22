@@ -24,4 +24,20 @@ public class EMSController {
     public ArrayList<EmployeeDTO> getEmployees(Response response) {
         return objDALManager.getEmployees(response);
     }
+
+    public Response addEmployee(EmployeeDTO employee) {
+        Response response = EMSFactory.getInstanceofResponse();
+        objDALManager.addEmployee(employee, response);
+        return response;
+    }
+    public Response deleteEmployee(EmployeeDTO employee) {
+        Response response = EMSFactory.getInstanceofResponse();
+        objDALManager.deleteEmployee(employee, response);
+        return response;
+    }
+    public Response updateEmployee(EmployeeDTO employee) {
+        Response response = EMSFactory.getInstanceofResponse();
+        objDALManager.updateEmployee(employee, response);
+        return response;
+    }
 }
